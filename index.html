@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextStepOverseas | MBBS in Russia for Indian Students</title>
+    
+    <!-- Google Fonts for Professionalism -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables for Branding --- */
+        :root {
+            --primary-blue: #003366; /* Deep Trustworthy Blue */
+            --secondary-blue: #0056b3; /* Brighter Blue for interactions */
+            --accent-orange: #FF9900; /* Energetic Orange for CTAs (contrast) */
+            --text-dark: #1a1a1a;
+            --text-gray: #555555;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --shadow: 0 5px 20px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Utility --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--primary-blue);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.7)), url('https://picsum.photos/seed/medschool/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* --- Transparency Banner --- */
+        .transparency-banner {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .transparency-banner p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* --- Why Choose Us (Local Advantage) --- */
+        .why-us {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: var(--radius);
+            background: var(--bg-light);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* --- Why Russia Section --- */
+        .why-russia {
+            background-color: var(--bg-light);
+        }
+
+        .russia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .russia-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .russia-list i {
+            color: var(--secondary-blue);
+            margin-top: 5px;
+        }
+
+        .russia-img img {
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Process Section --- */
+        .process {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .process .section-title, .process .section-subtitle {
+            color: var(--white);
+        }
+        
+        .process .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+        }
+
+        .step-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 15px auto;
+            font-size: 1.2rem;
+        }
+
+        .step-item h4 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- Universities Section --- */
+        .universities {
+            background-color: var(--white);
+        }
+
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .uni-card {
+            border: 1px solid #eee;
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .uni-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--secondary-blue);
+        }
+
+        .uni-img {
+            height: 180px;
+            background-color: #ddd;
+        }
+        
+        .uni-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .uni-info {
+            padding: 20px;
+        }
+
+        .uni-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .uni-details {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .uni-details div {
+            margin-bottom: 5px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            background: var(--bg-light);
+        }
+
+        .contact-wrapper {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 50px;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-item i {
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            flex: 1.5;
+            padding: 50px;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #002244;
+            color: #ccc;
+            padding: 50px 0 20px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .russia-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-plane-departure"></i> NextStepOverseas
+                </div>
+                <div class="mobile-menu-btn" id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#benefits">Why Russia</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Free Consultation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Secure Your Child's Future<br>with World-Class MBBS</h1>
+            <p>Direct admission in top Russian medical universities. 100% transparent pricing. Complete support from registration to graduation.</p>
+            <div style="margin-bottom: 30px;">
+                <a href="#contact" class="btn btn-primary">Plan My Studies</a>
+                <a href="#process" class="btn btn-outline" style="margin-left: 15px;">How It Works</a>
+            </div>
+            
+            <div class="hero-badges">
+                <span class="badge"><i class="fa-solid fa-check-circle"></i> NMC Approved</span>
+                <span class="badge"><i class="fa-solid fa-check-circle"></i> No Hidden Costs</span>
+                <span class="badge"><i class="fa-solid fa-check-circle"></i> Indian Food Available</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Promise Banner -->
+    <div class="transparency-banner">
+        <div class="container">
+            <p><i class="fa-solid fa-hand-holding-dollar"></i> Our Promise: Zero Hidden Charges. We help you plan the entire budget upfront.</p>
+        </div>
+    </div>
+
+    <!-- Why Choose Us (The Local Advantage) -->
+    <section id="why-us" class="section-padding why-us">
+        <div class="container">
+            <h2 class="section-title text-center">Why Parents Trust NextStepOverseas?</h2>
+            <p class="section-subtitle">We don't just sell admission; we provide a local guardian for your child in Russia.</p>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>Based in Russia</h3>
+                    <p>Unlike agents sitting in India, we live here. We provide real-time ground support, airport pickup, and local assistance.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h3>Total Cost Clarity</h3>
+                    <p>We provide a detailed breakdown of tuition, hostel, food, and insurance. No surprise fees after you arrive.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-user-graduate"></i></div>
+                    <h3>Academic Guidance</h3>
+                    <p>We help students select the right university based on their NEET score and budget, ensuring a smooth education path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Russia Section -->
+    <section id="benefits" class="section-padding why-russia">
+        <div class="container">
+            <div class="russia-grid">
+                <div class="russia-content">
+                    <h2 class="section-title">Why Study MBBS in Russia?</h2>
+                    <p style="margin-bottom: 20px; color: var(--text-gray);">Russia has been a top destination for Indian students for decades due to its high educational standards and affordable lifestyle.</p>
+                    
+                    <ul class="russia-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>Affordable Tuition:</strong> Fees start as low as $3,000/year, much cheaper than private Indian colleges.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>Global Recognition:</strong> Degrees recognized by WHO, NMC (India), and major medical councils worldwide.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>English Medium:</strong> Most universities offer MBBS entirely in English.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>FMGE Screening:</strong> High success rate for Indian students returning to practice.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="russia-img">
+                    <img src="https://picsum.photos/seed/moscow/600/500" alt="Students in Russia">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section-padding process">
+        <div class="container">
+            <h2 class="section-title text-center">Your Journey to Becoming a Doctor</h2>
+            <p class="section-subtitle">We handle the paperwork so you can focus on your studies.</p>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h4>Consultation</h4>
+                    <p>Discuss NEET score, budget, and preferences with our experts.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h4>Selection</h4>
+                    <p>Choose the best university and submit application documents.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h4>Visa & Travel</h4>
+                    <p>We assist with the Invitation Letter, Visa stamping, and flight tickets.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h4>Arrival Support</h4>
+                    <p>Airport pickup, hostel accommodation, and SIM card setup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universities Showcase -->
+    <section class="section-padding universities">
+        <div class="container">
+            <h2 class="section-title text-center">Top Partner Universities</h2>
+            <p class="section-subtitle">We partner with MCI/NMC approved government universities.</p>
+
+            <div class="uni-grid">
+                <!-- Uni 1 -->
+                <div class="uni-card">
+                    <div class="uni-img">
+                        <img src="https://picsum.photos/seed/uni1/400/250" alt="University Building">
+                    </div>
+                    <div class="uni-info">
+                        <h3>People's Friendship University</h3>
+                        <div class="uni-details">
+                            <div><i class="fa-solid fa-location-dot"></i> Moscow, Russia</div>
+                            <div><i class="fa-solid fa-language"></i> English Medium</div>
+                            <div><i class="fa-solid fa-star" style="color:var(--accent-orange)"></i> Top Ranked</div>
+                        </div>
+                        <a href="#contact" style="color: var(--secondary-blue); font-weight: 600;">Check Fees &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Uni 2 -->
+                <div class="uni-card">
+                    <div class="uni-img">
+                        <img src="https://picsum.photos/seed/uni2/400/250" alt="University Building">
+                    </div>
+                    <div class="uni-info">
+                        <h3>Kazan Federal University</h3>
+                        <div class="uni-details">
+                            <div><i class="fa-solid fa-location-dot"></i> Kazan, Russia</div>
+                            <div><i class="fa-solid fa-language"></i> English Medium</div>
+                            <div><i class="fa-solid fa-utensils"></i> Indian Mess Available</div>
+                        </div>
+                        <a href="#contact" style="color: var(--secondary-blue); font-weight: 600;">Check Fees &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Uni 3 -->
+                <div class="uni-card">
+                    <div class="uni-img">
+                        <img src="https://picsum.photos/seed/uni3/400/250" alt="University Building">
+                    </div>
+                    <div class="uni-info">
+                        <h3>Synergy University</h3>
+                        <div class="uni-details">
+                            <div><i class="fa-solid fa-location-dot"></i> Moscow, Russia</div>
+                            <div><i class="fa-solid fa-language"></i> English Medium</div>
+                            <div><i class="fa-solid fa-wallet"></i> Budget Friendly</div>
+                        </div>
+                        <a href="#contact" style="color: var(--secondary-blue); font-weight: 600;">Check Fees &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section-padding contact-section">
+        <div class="container">
+            <h2 class="section-title text-center">Get Free Counseling</h2>
+            <p class="section-subtitle">Fill in the details below. Our counselors in Russia will call you to discuss the best options.</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p style="margin-bottom: 30px; opacity: 0.9;">Have questions about the admission process or living costs? Reach out directly.</p>
+                    
+                    <div class="info-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <div>+7 (XXX) XXX-XX-XX</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <div>admissions@nextstepoverseas.com</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Office</strong>
+                            <div>Moscow, Russia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form onsubmit="handleForm(event)">
+                        <div class="form-group">
+                            <label>Student Name</label>
+                            <input type="text" class="form-control" placeholder="Enter student name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number (India)</label>
+                            <input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>NEET Score (if appeared)</label>
+                            <input type="number" class="form-control" placeholder="e.g. 350">
+                        </div>
+                        <div class="form-group">
+                            <label>Message / Query</label>
+                            <textarea class="form-control" rows="4" placeholder="I am interested in MBBS admission for 2024..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Request Callback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>NextStepOverseas</h4>
+                    <p>Your trusted partner for medical education in Russia. Transparent. Honest. Reliable.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#universities">Universities</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Popular Universities</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Moscow Medical Academy</a></li>
+                        <li><a href="#">Kazan Federal University</a></li>
+                        <li><a href="#">Crimean Federal University</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 NextStepOverseas. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                navLinks.classList.remove('active'); // Close mobile menu if open
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Form Handler
+        function handleForm(e) {
+            e.preventDefault();
+            alert("Thank you for contacting NextStepOverseas! Since we are based in Russia, we will WhatsApp you shortly regarding the time difference.");
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
