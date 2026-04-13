@@ -1,199 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NextStepOverseas | MBBS in Russia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextStepOverseas | FEFU Admissions</title>
+    
+    <!-- Google Fonts: Professional Sans-Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-:root{
---bg:#0a0e17;
---primary:#4361ee;
---accent:#f72585;
---glass:rgba(255,255,255,0.05);
---border:rgba(255,255,255,0.1);
---text:#fff;
---dim:#aaa;
---wa:#25D366;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Plus Jakarta Sans';background:var(--bg);color:var(--text)}
-.container{max-width:1200px;margin:auto;padding:20px}
+    <style>
+        /* --- Professional Color Palette --- */
+        :root {
+            --bg-dark: #0f172a;       /* Slate 900 */
+            --bg-card: #1e293b;       /* Slate 800 */
+            --primary: #1e40af;       /* Deep Blue */
+            --accent: #d97706;        /* Muted Gold/Amber */
+            --text-main: #f8fafc;     /* White-ish */
+            --text-muted: #94a3b8;    /* Grey */
+            --border: #334155;
+        }
 
-header{position:fixed;width:100%;top:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:100}
-nav{display:flex;justify-content:space-between;align-items:center}
-nav ul{display:flex;gap:20px;list-style:none}
-nav a{color:white;text-decoration:none}
-.btn{padding:12px 25px;border-radius:30px;background:var(--primary);color:white;text-decoration:none}
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-.hero{height:100vh;display:flex;align-items:center}
-.hero h1{font-size:3rem}
-.hero span{color:var(--accent)}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-.section{padding:100px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: white; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-.card{
-background:var(--glass);
-padding:30px;
-border-radius:20px;
-border:1px solid var(--border);
-}
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.contact{
-display:flex;
-gap:40px;
-flex-wrap:wrap;
-}
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px; /* Squarer corners for professional look */
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.input{
-width:100%;
-padding:12px;
-margin-top:10px;
-border-radius:10px;
-border:none;
-background:#111;
-color:white;
-}
+        .btn-gold {
+            background-color: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
 
-button{
-padding:15px;
-width:100%;
-background:var(--wa);
-border:none;
-border-radius:10px;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
+        .btn-gold:hover {
+            background-color: #b45309;
+            border-color: #b45309;
+            transform: translateY(-2px);
+        }
 
-footer{text-align:center;padding:30px;color:var(--dim)}
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+        }
 
-.wa{
-position:fixed;
-bottom:20px;
-right:20px;
-background:var(--wa);
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-color:white;
-}
-</style>
+        .btn-outline:hover {
+            background: white;
+            color: var(--bg-dark);
+        }
+
+        .section-padding { padding: 80px 0; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--text-muted); font-weight: 500; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), url('https://picsum.photos/seed/vladivostok/1920/1080');
+            background-size: cover;
+            background-position: center;
+            padding-top: 140px; /* Offset for fixed header */
+            padding-bottom: 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        /* --- About FEFU --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 20px 20px 0 var(--bg-card);
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-muted);
+        }
+
+        .feature-list i { color: var(--accent); }
+
+        /* --- Fees Table (Professional) --- */
+        .fees-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: rgba(255,255,255,0.02); }
+
+        .fee-note {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* --- Video Consultation Section --- */
+        .consultation-box {
+            background: linear-gradient(135deg, var(--primary), #172554);
+            padding: 60px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+        }
+
+        /* --- Trust Indicators --- */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-top: 3px solid var(--accent);
+            text-align: center;
+        }
+
+        .trust-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 8px;
+            height: 100%;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Make links look professional */
+        .contact-link {
+            color: var(--text-muted);
+            border-bottom: 1px dotted var(--border);
+            transition: 0.2s;
+        }
+
+        .contact-link:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* --- Floating WhatsApp --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .floating-wa:hover { transform: scale(1.1); }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplified for demo */
+            .consultation-box { padding: 30px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<div class="container">
-<nav>
-<h3>NextStepOverseas</h3>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">Why Us</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</div>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-graduation-cap"></i> NextStepOverseas
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About FEFU</a></li>
+                    <li><a href="#fees">Fees Structure</a></li>
+                    <li><a href="#consultancy">Consultancy</a></li>
+                    <li><a href="#contact" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.8rem;">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<section id="home" class="hero">
-<div class="container">
-<h1>Become a Doctor.<br><span>Study in Russia</span></h1>
-<p style="margin:20px 0;color:#ccc;">Direct MBBS admission with full support from India to Russia.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Far Eastern Federal University</h1>
+                <p><strong>Quality Over Quantity.</strong> We provide dedicated consultancy for Indian students aiming for world-class medical education in Vladivostok, Russia.</p>
+                
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#consultancy" class="btn btn-gold">Book 1-on-1 Video Call</a>
+                    <a href="#fees" class="btn btn-outline">View Fee Structure</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="#contact" class="btn">Plan My Studies</a>
-<a href="https://wa.me/79940053832" class="btn" style="background:var(--wa)">WhatsApp</a>
-</div>
-</section>
+    <!-- About FEFU Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 20px;">Why Study at FEFU?</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">
+                        Far Eastern Federal University (FEFU) is one of Russia's top-rated federal universities. Located in the beautiful coastal city of Vladivostok, it offers a modern campus and a globally recognized MBBS degree.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>English Medium:</strong> Complete course taught in English.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Duration:</strong> 6 Years (5 Years Study + 1 Year Internship).</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Recognition:</strong> NMC (India), WHO, & UNESCO approved.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Indian Mess:</strong> Availability of Indian food on campus.</li>
+                    </ul>
+                </div>
+                <div class="about-img">
+                    <img src="https://picsum.photos/seed/fefu/600/400" alt="Far Eastern Federal University Campus">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="about" class="section">
-<div class="container grid">
+    <!-- Fees Structure Section -->
+    <section id="fees" class="section-padding" style="background-color: #131c31;">
+        <div class="container">
+            <h2 class="section-title">Transparent Fee Structure</h2>
+            <p class="section-subtitle">No hidden costs. We believe in complete clarity.</p>
 
-<div class="card">
-<h3>Personal Guidance</h3>
-<p>1-on-1 counseling based on NEET score & budget</p>
-</div>
+            <div class="fees-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fee Component</th>
+                            <th>1st Year (Approx)</th>
+                            <th>2nd - 6th Year (Per Year)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tuition Fee</strong></td>
+                            <td>~$4,200 USD</td>
+                            <td>~$4,200 USD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hostel Fee</strong></td>
+                            <td>~$600 USD</td>
+                            <td>~$600 USD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Medical Insurance</strong></td>
+                            <td>~$200 USD</td>
+                            <td>~$200 USD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total (Approx)</strong></td>
+                            <td><strong>~$5,000 USD</strong></td>
+                            <td><strong>~$5,000 USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="fee-note">
+                    *Fees are subject to minor changes based on university exchange rates. Contact us for the exact invoice for the current academic year.
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h3>Verified Universities</h3>
-<p>Only NMC approved universities</p>
-</div>
+    <!-- Trust & Services Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Commitment</h2>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <i class="fa-solid fa-video"></i>
+                    <h3>1-on-1 Consultancy</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">
+                        Personal video call sessions to guide parents and students through the admission process.
+                    </p>
+                </div>
+                <div class="trust-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">
+                        We are open to calls round the clock. We are here to help whenever you need us.
+                    </p>
+                </div>
+                <div class="trust-card">
+                    <i class="fa-solid fa-file-contract"></i>
+                    <h3>Transparent Process</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">
+                        Direct admission. We do not charge unnecessary middleman fees or hide costs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h3>End-to-End Support</h3>
-<p>Admission to hostel & settlement</p>
-</div>
+    <!-- Video Consultation CTA -->
+    <section id="consultancy" class="section-padding">
+        <div class="container">
+            <div class="consultation-box">
+                <h2 style="margin-bottom: 15px;">Speak to an Expert Directly</h2>
+                <p style="margin-bottom: 30px; color: #cbd5e1;">
+                    Confused about the admission process? Book a 1-on-1 video call session with our team. We will answer all your questions regarding FEFU, visa, and hostel life.
+                </p>
+                <a href="https://wa.me/79940053832?text=Hello,%20I%20would%20like%20to%20book%20a%201-on-1%20video%20consultation%20for%20FEFU." target="_blank" class="btn btn-gold">
+                    <i class="fa-brands fa-whatsapp"></i> Book Video Session
+                </a>
+            </div>
+        </div>
+    </section>
 
-</div>
-</section>
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding" style="background-color: #131c31;">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">We are based in Russia to support you on the ground.</p>
 
-<section id="contact" class="section">
-<div class="container contact">
+            <div class="contact-wrapper">
+                <!-- Contact Info -->
+                <div class="contact-info-card">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Call Us (24/7)</h4>
+                            <!-- Hyperlinked Phone Number -->
+                            <a href="tel:+79940053832" class="contact-link">+7 994 005 38 32</a>
+                        </div>
+                    </div>
 
-<div style="flex:1;min-width:300px">
-<h2>Contact Us</h2>
-<p style="color:#aaa;margin-top:10px">We will guide you step by step</p>
-</div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <!-- Hyperlinked WhatsApp -->
+                            <a href="https://wa.me/79940053832" target="_blank" class="contact-link">+7 994 005 38 32</a>
+                        </div>
+                    </div>
 
-<form style="flex:1.5;min-width:300px" onsubmit="event.preventDefault(); sendLead();">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <!-- Hyperlinked Email -->
+                            <a href="mailto:rohit1234singhraj@gmail.com" class="contact-link">rohit1234singhraj@gmail.com</a>
+                        </div>
+                    </div>
 
-<label>Name</label>
-<input id="name" class="input" required>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-details">
+                            <h4>India Office</h4>
+                            <!-- Hyperlinked Location (Opens Google Maps) -->
+                            <a href="https://www.google.com/maps/search/?api=1&query=Jainamori+Bokaro" target="_blank" class="contact-link">Jainamori, Bokaro, Jharkhand, India</a>
+                        </div>
+                    </div>
+                </div>
 
-<label>Phone</label>
-<input id="phone" class="input" required>
+                <!-- Quick Form (Redirects to WhatsApp) -->
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="margin-bottom: 20px;">Send a Quick Query</h3>
+                    <form onsubmit="sendToWhatsapp(event)">
+                        <input type="text" id="qName" placeholder="Your Name" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #0f172a; border: 1px solid var(--border); color: white; border-radius: 4px;">
+                        <input type="text" id="qMsg" placeholder="Your Query (e.g., FEFU Admission 2024)" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #0f172a; border: 1px solid var(--border); color: white; border-radius: 4px;">
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">Send via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<label>Message</label>
-<textarea id="msg" class="input" required></textarea>
+    <!-- Footer -->
+    <footer style="background: black; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
+        <div class="container">
+            <p>&copy; 2023 NextStepOverseas. All Rights Reserved.</p>
+            <p style="margin-top: 10px;">Made for <strong>Far Eastern Federal University</strong> Aspirants.</p>
+        </div>
+    </footer>
 
-<button type="submit">Send via WhatsApp</button>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/79940053832?text=Hello%20NextStepOverseas,%20I%20am%20interested%20in%20FEFU." class="floating-wa" target="_blank" title="Chat with us">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-</form>
-
-</div>
-</section>
-
-<footer>
-© 2026 NextStepOverseas
-</footer>
-
-<a href="https://wa.me/79940053832" class="wa">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<script>
-function sendLead(){
-
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let msg=document.getElementById("msg").value;
-
-// Save to Google Sheets
-fetch("https://script.google.com/macros/s/AKfycbwm2oTxyfbNYgI3z3GaaWfbxuUSBmcuijxKIIP5KCxrSMJ56V14c2jOUchqp6BfhbkP/exec",{
-method:"POST",
-body:JSON.stringify({
-name:name,
-phone:phone,
-message:msg
-})
-});
-
-// WhatsApp
-let text=`Hello, I am ${name}. My number is ${phone}. ${msg}`;
-let url=`https://wa.me/79940053832?text=${encodeURIComponent(text)}`;
-window.open(url,"_blank");
-
-alert("Thank you! We will contact you soon.");
-}
-</script>
-
+    <script>
+        // Function to send query via WhatsApp
+        function sendToWhatsapp(e) {
+            e.preventDefault();
+            const name = document.getElementById('qName').value;
+            const msg = document.getElementById('qMsg').value;
+            
+            if(name && msg) {
+                const text = `Hello NextStepOverseas. My name is ${name}. Query: ${msg}`;
+                const url = `https://wa.me/79940053832?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+            } else {
+                alert("Please fill in your name and query.");
+            }
+        }
+    </script>
 </body>
 </html>
