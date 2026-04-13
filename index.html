@@ -33,13 +33,13 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll during animations */
+            overflow-x: hidden;
         }
 
         /* --- Background Animation (Subtle Pulse) --- */
         @keyframes subtleBgShift {
             0% { background-color: var(--bg-dark); }
-            50% { background-color: #111827; } /* Slightly lighter slate */
+            50% { background-color: #111827; }
             100% { background-color: var(--bg-dark); }
         }
         
@@ -125,7 +125,6 @@
             transform: translateY(0);
         }
 
-        /* Staggered Delays for Grids */
         .delay-100 { transition-delay: 0.1s; }
         .delay-200 { transition-delay: 0.2s; }
         .delay-300 { transition-delay: 0.3s; }
@@ -302,7 +301,7 @@
             box-shadow: 0 20px 40px rgba(30, 64, 175, 0.3);
         }
 
-        /* --- Trust Indicators (Hover Lift) --- */
+        /* --- Trust Indicators --- */
         .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 
         .trust-card {
@@ -394,7 +393,6 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* --- Input Fields --- */
         input { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
         input:focus {
             outline: none;
@@ -402,7 +400,6 @@
             box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
         }
 
-        /* --- Mobile Responsive --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
@@ -586,7 +583,16 @@
                         <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div class="contact-details">
                             <h4>Email Us</h4>
-                            <a href="mailto:nextstepoverseasnso@gmail.com" class="contact-link">nextstepoverseasnso@gmail.com</a>
+                            <a href="mailto:rohit1234singhraj@gmail.com" class="contact-link">rohit1234singhraj@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <!-- NEW TELEGRAM LINK ADDED HERE -->
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-telegram"></i></div>
+                        <div class="contact-details">
+                            <h4>Telegram</h4>
+                            <a href="https://t.me/rohit22399" target="_blank" class="contact-link">@rohit22399</a>
                         </div>
                     </div>
 
@@ -594,7 +600,7 @@
                         <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div class="contact-details">
                             <h4>India Office</h4>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Jainamori+Bokaro" target="_blank" class="contact-link">Jainamori, Bokaro, Jharkhand, India</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Jainamore+Bokaro" target="_blank" class="contact-link">Jainamore, Bokaro, Jharkhand, India</a>
                         </div>
                     </div>
                 </div>
@@ -634,11 +640,11 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("active");
-                        observer.unobserve(entry.target); // Only animate once
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.15 // Trigger when 15% of element is visible
+                threshold: 0.15
             });
 
             reveals.forEach(reveal => {
