@@ -1,561 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextStepOverseas | MBBS in Russia</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextStepOverseas | MBBS in Russia</title>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* --- Variables & Reset --- */
-        :root {
-            --dark-bg: #0a0e17;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --primary: #4361ee;
-            --accent: #f72585;
-            --whatsapp-green: #25D366;
-            --text-light: #f8f9fa;
-            --text-dim: #adb5bd;
-            --glass: rgba(255, 255, 255, 0.1);
-            --border: rgba(255, 255, 255, 0.1);
-        }
+<style>
+:root{
+--bg:#0a0e17;
+--primary:#4361ee;
+--accent:#f72585;
+--glass:rgba(255,255,255,0.05);
+--border:rgba(255,255,255,0.1);
+--text:#fff;
+--dim:#aaa;
+--wa:#25D366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans';background:var(--bg);color:var(--text)}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+header{position:fixed;width:100%;top:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:100}
+nav{display:flex;justify-content:space-between;align-items:center}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{color:white;text-decoration:none}
+.btn{padding:12px 25px;border-radius:30px;background:var(--primary);color:white;text-decoration:none}
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
+.hero{height:100vh;display:flex;align-items:center}
+.hero h1{font-size:3rem}
+.hero span{color:var(--accent)}
 
-        h1, h2, h3, h4 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-        }
+.section{padding:100px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
+.card{
+background:var(--glass);
+padding:30px;
+border-radius:20px;
+border:1px solid var(--border);
+}
 
-        /* --- Preloader --- */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-bg);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loader-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--primary);
-            border-top: 4px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+.contact{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+}
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:none;
+background:#111;
+color:white;
+}
 
-        /* --- Animated Background Blobs --- */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
+button{
+padding:15px;
+width:100%;
+background:var(--wa);
+border:none;
+border-radius:10px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
 
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: moveBlob 20s infinite alternate;
-        }
+footer{text-align:center;padding:30px;color:var(--dim)}
 
-        .blob-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; }
-        .blob-2 { width: 500px; height: 500px; background: var(--accent); bottom: -100px; right: -100px; animation-delay: -5s; }
-        .blob-3 { width: 300px; height: 300px; background: #4cc9f0; top: 40%; left: 40%; animation-duration: 25s; }
-
-        @keyframes moveBlob {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
-        }
-
-        /* --- Header & Nav --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 0;
-            z-index: 100;
-            transition: 0.3s;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        
-        .logo-svg { height: 45px; width: auto; filter: drop-shadow(0 0 10px rgba(67, 97, 238, 0.5)); }
-
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #fff, #4cc9f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        nav ul { display: flex; gap: 30px; list-style: none; }
-
-        nav a { color: var(--text-light); font-weight: 500; position: relative; }
-        nav a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background: var(--accent); transition: 0.3s;
-        }
-        nav a:hover { color: #fff; }
-        nav a:hover::after { width: 100%; }
-
-        .btn-glow {
-            padding: 12px 30px; background: var(--primary); color: white; border-radius: 50px;
-            font-weight: 600; box-shadow: 0 0 20px rgba(67, 97, 238, 0.4); transition: 0.3s;
-            border: none; cursor: pointer; display: inline-block;
-        }
-
-        .btn-glow:hover {
-            box-shadow: 0 0 30px rgba(67, 97, 238, 0.7); transform: translateY(-2px); background: #3a56d4;
-        }
-
-        .btn-whatsapp-nav {
-            padding: 12px 30px; background: var(--whatsapp-green); color: white; border-radius: 50px;
-            font-weight: 600; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); transition: 0.3s;
-            border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
-        }
-        .btn-whatsapp-nav:hover {
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.7); transform: translateY(-2px); background: #20bd5a;
-        }
-
-        /* --- Hero Section --- */
-        .hero { height: 100vh; display: flex; align-items: center; position: relative; padding-top: 80px; }
-        .hero-content { max-width: 600px; z-index: 2; }
-        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(to right, #ffffff, #adb5bd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero h1 span { color: var(--accent); -webkit-text-fill-color: var(--accent); }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; line-height: 1.6; }
-        .hero-visual { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; z-index: 1; display: none; /* Hidden on mobile */ }
-        @media (min-width: 992px) { .hero-visual { display: block; } }
-
-        .floating-card {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px; padding: 20px; position: absolute; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            animation: float 6s ease-in-out infinite;
-        }
-        .fc-1 { top: 10%; left: 0; width: 200px; animation-delay: 0s; }
-        .fc-2 { top: 50%; right: 0; width: 220px; animation-delay: 2s; }
-        .fc-3 { bottom: 10%; left: 50px; width: 180px; animation-delay: 4s; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        @keyframes floatReverse { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(20px); } }
-
-        /* --- Sections --- */
-        .section { padding: 100px 0; position: relative; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
-        .section-header p { color: var(--text-dim); max-width: 600px; margin: 0 auto; }
-
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-        .glass-card {
-            background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 24px;
-            transition: 0.4s; position: relative; overflow: hidden; cursor: default;
-        }
-        .glass-card:hover {
-            transform: translateY(-10px); background: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary); box-shadow: 0 10px 40px rgba(67, 97, 238, 0.2);
-        }
-        .icon-box {
-            width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 16px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 25px; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .glass-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .glass-card p { color: var(--text-dim); line-height: 1.6; }
-
-        /* --- Stats --- */
-        .stats {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/med/1920/600');
-            background-size: cover; background-attachment: fixed; padding: 80px 0; text-align: center;
-        }
-        .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--accent); margin-bottom: 10px; font-family: 'Outfit', sans-serif; }
-
-        /* --- Contact --- */
-        .contact-wrapper {
-            background: var(--glass); border: 1px solid var(--border); border-radius: 30px;
-            padding: 50px; display: flex; flex-wrap: wrap; gap: 50px;
-        }
-        .contact-info { flex: 1; min-width: 300px; }
-        .contact-form { flex: 1.5; min-width: 300px; }
-        .form-group { margin-bottom: 20px; }
-        .input-field {
-            width: 100%; padding: 15px; background: rgba(0,0,0,0.2); border: 1px solid var(--border);
-            border-radius: 10px; color: white; font-family: inherit; transition: 0.3s;
-        }
-        .input-field:focus { outline: none; border-color: var(--primary); background: rgba(0,0,0,0.4); }
-        
-        .info-item {
-            display: flex; align-items: center; gap: 15px; margin-bottom: 25px;
-            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px;
-            transition: 0.3s;
-        }
-        .info-item:hover { background: rgba(255,255,255,0.08); transform: translateX(5px); }
-        .info-item i { font-size: 1.5rem; color: var(--accent); width: 30px; text-align: center; }
-
-        /* --- Floating WhatsApp Button --- */
-        .floating-wa {
-            position: fixed; bottom: 30px; right: 30px; z-index: 1000;
-            background-color: var(--whatsapp-green); color: white; width: 65px; height: 65px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            animation: pulse 2s infinite; transition: 0.3s;
-        }
-        .floating-wa:hover { transform: scale(1.1); color: white; }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* --- Scroll Reveal --- */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- Footer --- */
-        footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav ul { display: none; } /* Simplified mobile menu for demo */
-            .contact-wrapper { padding: 25px; }
-        }
-    </style>
+.wa{
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--wa);
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-spinner"></div>
-    </div>
+<header>
+<div class="container">
+<nav>
+<h3>NextStepOverseas</h3>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">Why Us</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
 
-    <!-- Background Animation -->
-    <div class="bg-animation">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
+<section id="home" class="hero">
+<div class="container">
+<h1>Become a Doctor.<br><span>Study in Russia</span></h1>
+<p style="margin:20px 0;color:#ccc;">Direct MBBS admission with full support from India to Russia.</p>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo-container" onclick="window.scrollTo(0,0)">
-                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="45" stroke="url(#paint0_linear)" stroke-width="5"/>
-                    <path d="M50 15V85M15 50H85" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                    <path d="M35 50L50 65L65 35" stroke="#f72585" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <defs>
-                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#4361ee"/>
-                            <stop offset="1" stop-color="#f72585"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <span class="brand-name">NextStepOverseas</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Why Us</a></li>
-                    <li><a href="#process">Process</a></li>
-                    <li><a href="https://wa.me/79940053832" target="_blank" class="btn-whatsapp-nav"><i class="fa-brands fa-whatsapp"></i> Chat Now</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<a href="#contact" class="btn">Plan My Studies</a>
+<a href="https://wa.me/79940053832" class="btn" style="background:var(--wa)">WhatsApp</a>
+</div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content reveal">
-                <h1>Become a Doctor.<br><span>Study in Russia.</span></h1>
-                <p>Direct admission to top NMC-approved universities. 100% transparency, zero hidden costs, and complete local support.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="#contact" class="btn-glow">Plan My Studies</a>
-                    <a href="https://wa.me/79940053832" target="_blank" class="btn-whatsapp-nav" style="text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
-                </div>
-            </div>
+<section id="about" class="section">
+<div class="container grid">
 
-            <div class="hero-visual">
-                <div class="floating-card fc-1">
-                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                        <i class="fa-solid fa-graduation-cap" style="color: #4cc9f0; font-size: 1.5rem;"></i>
-                        <span style="font-weight:bold;">MBBS Degree</span>
-                    </div>
-                    <p style="font-size: 0.8rem; color: #ccc;">Globally recognized by WHO & NMC.</p>
-                </div>
-                <div class="floating-card fc-2" style="animation: floatReverse 6s ease-in-out infinite;">
-                    <img src="https://picsum.photos/seed/student1/200/200" style="width:100%; border-radius:10px; object-fit:cover;" alt="Student">
-                    <div style="margin-top:10px; font-weight:bold;">Success Story</div>
-                </div>
-                <div class="floating-card fc-3">
-                    <div style="font-size:2rem; font-weight:800; color:var(--accent);">$3000</div>
-                    <p style="font-size:0.8rem;">Starting fee per year</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<h3>Personal Guidance</h3>
+<p>1-on-1 counseling based on NEET score & budget</p>
+</div>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container grid-3">
-            <div class="reveal">
-                <div class="stat-number" data-target="500">0</div>
-                <p>Students Placed</p>
-            </div>
-            <div class="reveal" style="transition-delay: 0.2s;">
-                <div class="stat-number" data-target="50">0</div>
-                <p>Partner Universities</p>
-            </div>
-            <div class="reveal" style="transition-delay: 0.4s;">
-                <div class="stat-number" data-target="100">0%</div>
-                <p>Visa Success Rate</p>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<h3>Verified Universities</h3>
+<p>Only NMC approved universities</p>
+</div>
 
-    <!-- Features Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Why Trust NextStep?</h2>
-                <p>We are not just agents; we are your guardians in Russia.</p>
-            </div>
-            <div class="grid-3">
-                <div class="glass-card reveal">
-                    <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
-                    <h3>Based in Russia</h3>
-                    <p>Our team lives here. We provide real-time ground support, airport pickup, and local assistance.</p>
-                </div>
-                <div class="glass-card reveal" style="transition-delay: 0.2s;">
-                    <div class="icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                    <h3>Zero Hidden Cost</h3>
-                    <p>We provide a detailed budget breakdown before you fly. No surprise fees.</p>
-                </div>
-                <div class="glass-card reveal" style="transition-delay: 0.4s;">
-                    <div class="icon-box"><i class="fa-solid fa-user-doctor"></i></div>
-                    <h3>NMC Approved</h3>
-                    <p>Government universities listed in the World Directory of Medical Schools.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<h3>End-to-End Support</h3>
+<p>Admission to hostel & settlement</p>
+</div>
 
-    <!-- Process Section -->
-    <section id="process" class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Admission Process</h2>
-                <p>We simplify the complex journey into 4 easy steps.</p>
-            </div>
-            <div class="grid-3">
-                <div class="glass-card reveal text-center">
-                    <h3 style="color:var(--primary)">01</h3>
-                    <p>Consultation & University Selection</p>
-                </div>
-                <div class="glass-card reveal" style="transition-delay: 0.2s;" class="text-center">
-                    <h3 style="color:var(--primary)">02</h3>
-                    <p>Invitation Letter & Visa Processing</p>
-                </div>
-                <div class="glass-card reveal" style="transition-delay: 0.4s;" class="text-center">
-                    <h3 style="color:var(--primary)">03</h3>
-                    <p>Travel, Pickup & Hostel Setup</p>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Contact Us</h2>
-                <p>Get in touch for admission guidance.</p>
-            </div>
+<section id="contact" class="section">
+<div class="container contact">
 
-            <div class="contact-wrapper reveal">
-                <div class="contact-info">
-                    <h3 style="margin-bottom: 30px;">Get in Touch</h3>
-                    
-                    <!-- Phone -->
-                    <div class="info-item" onclick="window.location.href='tel:+79940053832'" style="cursor: pointer;">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">Call Us (Russia)</div>
-                            <div style="font-weight: bold;">+7 994 005 38 32</div>
-                        </div>
-                    </div>
+<div style="flex:1;min-width:300px">
+<h2>Contact Us</h2>
+<p style="color:#aaa;margin-top:10px">We will guide you step by step</p>
+</div>
 
-                    <!-- WhatsApp -->
-                    <div class="info-item" onclick="window.open('https://wa.me/79940053832', '_blank')" style="cursor: pointer; border-color: var(--whatsapp-green);">
-                        <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green);"></i>
-                        <div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">WhatsApp Chat</div>
-                            <div style="font-weight: bold;">+7 994 005 38 32</div>
-                        </div>
-                    </div>
+<form style="flex:1.5;min-width:300px" onsubmit="event.preventDefault(); sendLead();">
 
-                    <!-- Email -->
-                    <div class="info-item" onclick="window.location.href='mailto:rohit1234singhraj@gmail.com'" style="cursor: pointer;">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">Email Us</div>
-                            <div style="font-weight: bold;">rohit1234singhraj@gmail.com</div>
-                        </div>
-                    </div>
+<label>Name</label>
+<input id="name" class="input" required>
 
-                    <!-- Location -->
-                    <div class="info-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <div style="font-size: 0.8rem; color: var(--text-dim);">Office Location (India)</div>
-                            <div style="font-weight: bold;">Jainamori, Bokaro</div>
-                        </div>
-                    </div>
-                </div>
+<label>Phone</label>
+<input id="phone" class="input" required>
 
-                <form class="contact-form" onsubmit="event.preventDefault(); openWhatsAppWithMessage();">
-                    <div class="form-group">
-                        <label style="color: var(--text-dim); font-size: 0.9rem;">Student Name</label>
-                        <input type="text" id="waName" class="input-field" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label style="color: var(--text-dim); font-size: 0.9rem;">Phone Number</label>
-                        <input type="tel" id="waPhone" class="input-field" placeholder="+91 XXXXX XXXXX" required>
-                    </div>
-                    <div class="form-group">
-                        <label style="color: var(--text-dim); font-size: 0.9rem;">NEET Score / Query</label>
-                        <input type="text" id="waMsg" class="input-field" placeholder="I am interested in MBBS..." required>
-                    </div>
-                    <button type="submit" class="btn-whatsapp-nav" style="width: 100%; justify-content: center; border-radius: 10px; text-decoration: none;">
-                        <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+<label>Message</label>
+<textarea id="msg" class="input" required></textarea>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 NextStepOverseas. Made in Russia & India.</p>
-        </div>
-    </footer>
+<button type="submit">Send via WhatsApp</button>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/79940053832?text=Hello%20NextStepOverseas,%20I%20am%20interested%20in%20MBBS%20in%20Russia." class="floating-wa" target="_blank" title="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+</form>
 
-    <!-- Scripts -->
-    <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 500);
-        });
+</div>
+</section>
 
-        // Scroll Reveal
-        window.addEventListener('scroll', reveal);
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var revealTop = reveals[i].getBoundingClientRect().top;
-                var revealPoint = 150;
-                if (revealTop < windowHeight - revealPoint) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-        reveal();
+<footer>
+© 2026 NextStepOverseas
+</footer>
 
-        // Number Counter
-        const counters = document.querySelectorAll('.stat-number');
-        let hasAnimated = false;
-        window.addEventListener('scroll', () => {
-            const statsSection = document.querySelector('.stats');
-            const sectionPos = statsSection.getBoundingClientRect().top;
-            const screenPos = window.innerHeight / 1.3;
-            if (sectionPos < screenPos && !hasAnimated) {
-                counters.forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const speed = 200;
-                    const updateCount = () => {
-                        const count = +counter.innerText.replace(/\D/g,'');
-                        const inc = target / speed;
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count + inc) + (counter.innerText.includes('%') ? '%' : '');
-                            setTimeout(updateCount, 20);
-                        } else {
-                            counter.innerText = target + (target === 100 ? '%' : '+');
-                        }
-                    };
-                    updateCount();
-                });
-                hasAnimated = true;
-            }
-        });
+<a href="https://wa.me/79940053832" class="wa">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 
-        // Function to send form data via WhatsApp
-        function openWhatsAppWithMessage() {
-            const name = document.getElementById('waName').value;
-            const phone = document.getElementById('waPhone').value;
-            const msg = document.getElementById('waMsg').value;
-            
-            const text = `Hello NextStepOverseas! My name is ${name}. My number is ${phone}. My query is: ${msg}`;
-            const url = `https://wa.me/79940053832?text=${encodeURIComponent(text)}`;
-            
-            window.open(url, '_blank');
-        }
-    </script>
+<script>
+function sendLead(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let msg=document.getElementById("msg").value;
+
+// Save to Google Sheets
+fetch("https://script.google.com/macros/s/AKfycbwm2oTxyfbNYgI3z3GaaWfbxuUSBmcuijxKIIP5KCxrSMJ56V14c2jOUchqp6BfhbkP/exec",{
+method:"POST",
+body:JSON.stringify({
+name:name,
+phone:phone,
+message:msg
+})
+});
+
+// WhatsApp
+let text=`Hello, I am ${name}. My number is ${phone}. ${msg}`;
+let url=`https://wa.me/79940053832?text=${encodeURIComponent(text)}`;
+window.open(url,"_blank");
+
+alert("Thank you! We will contact you soon.");
+}
+</script>
+
 </body>
 </html>
