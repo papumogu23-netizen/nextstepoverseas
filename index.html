@@ -8,48 +8,76 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Professional Color Palette --- */
+        /* --- THEME: Warm, Ambient, Professional --- */
         :root {
-            --bg-dark: #0f172a;       /* Slate 900 */
-            --bg-darker: #020617;     /* Darker for contrast */
-            --bg-card: #1e293b;       /* Slate 800 */
+            /* Warm Cream/Beige Background */
+            --bg-body: #fcfbf7;      
+            --bg-card: #ffffff;      
             --primary: #1e40af;       /* Deep Blue */
+            --primary-dark: #1e3a8a;  /* Darker Blue for text */
             --accent: #d97706;        /* Muted Gold/Amber */
-            --text-main: #f8fafc;     /* White-ish */
-            --text-muted: #94a3b8;    /* Grey */
-            --border: #334155;
+            --youtube-red: #FF0000;
+            --text-main: #1e293b;     /* Dark text */
+            --text-muted: #64748b;    /* Grey text */
+            --border: #e2e8f0;       /* Subtle border */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- Background Animation (Subtle Pulse) --- */
-        @keyframes subtleBgShift {
-            0% { background-color: var(--bg-dark); }
-            50% { background-color: #111827; }
-            100% { background-color: var(--bg-dark); }
-        }
-        
-        body {
-            animation: subtleBgShift 15s infinite alternate ease-in-out;
-        }
-
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: white; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--text-main); }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
         ul { list-style: none; }
+
+        /* --- Ambient Background Animation --- */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; /* Behind everything */
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px); /* Creates soft glow */
+            opacity: 0.4; /* Low opacity to keep it toned down */
+            animation: floatBlob 20s infinite alternate ease-in-out;
+        }
+
+        /* Warm Orange/Gold Blob 1 */
+        .blob-1 {
+            width: 600px; height: 600px;
+            background: #fcd34d; /* Warm Gold */
+            top: -100px; left: -100px;
+        }
+        
+        /* Warm Soft Orange Blob 2 */
+        .blob-2 {
+            width: 500px; height: 500px;
+            background: #ffedd5; /* Very Light Orange */
+            bottom: -100px; right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 50px) scale(1.1); }
+        }
 
         /* --- Utility Classes --- */
         .container {
@@ -58,44 +86,48 @@
             padding: 0 20px;
         }
 
-        /* Button Animations */
+        /* Button Styling */
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 4px;
             font-weight: 600;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-gold {
             background-color: var(--accent);
             color: white;
-            border: 1px solid var(--accent);
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.2);
         }
 
         .btn-gold:hover {
             background-color: #b45309;
-            border-color: #b45309;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+            transform: translateY(-2px);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--text-main);
-            color: var(--text-main);
+        .btn-blue {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
         }
 
-        .btn-outline:hover {
-            background: white;
-            color: var(--bg-dark);
-            transform: translateY(-3px);
+        .btn-blue:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-youtube {
+            background-color: var(--youtube-red);
+            color: white;
+        }
+        .btn-youtube:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
         }
 
         .section-padding { padding: 100px 0; }
@@ -104,6 +136,7 @@
             text-align: center;
             margin-bottom: 15px;
             font-size: 2.5rem;
+            color: var(--primary-dark);
         }
 
         .section-subtitle {
@@ -111,12 +144,13 @@
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto 50px auto;
+            font-size: 1.1rem;
         }
 
         /* --- Scroll Animation Classes --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
 
@@ -129,100 +163,108 @@
         .delay-200 { transition-delay: 0.2s; }
         .delay-300 { transition-delay: 0.3s; }
 
-        /* --- Header --- */
+        /* --- Header (Warm, Integrated) --- */
         header {
-            background-color: rgba(15, 23, 42, 0.95);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 0;
+            /* Matches warm body background with slight transparency */
+            background-color: rgba(252, 251, 247, 0.95); 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            transition: padding 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
-        header.scrolled { padding: 15px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px; 
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+        /* Logo Wrapper - Handles Image AND Text side-by-side */
+        .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: transform 0.3s ease;
+            gap: 15px; /* Space between logo and text */
+            z-index: 2; /* Ensure visibility */
+        }
+
+        /* Logo Image */
+        .logo-img {
+            height: 45px; /* Consistent, reasonable size */
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Logo Text (Fixed for Visibility) */
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700; /* Bold */
+            font-size: 1.5rem; /* Large enough to be seen */
+            color: var(--primary-dark); /* Dark Blue #1e3a8a against Cream BG */
+            line-height: 1;
+            letter-spacing: -0.5px;
+            /* Ensure no opacity issues */
+            opacity: 1;
         }
         
-        .logo:hover { transform: scale(1.05); }
-
-        .logo i { color: var(--accent); transition: transform 0.5s ease; }
-        .logo:hover i { transform: rotate(15deg); }
-
         .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--text-muted); font-weight: 500; position: relative; }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+        .nav-links a { 
+            color: var(--text-main); 
+            font-weight: 500; 
+            font-size: 0.95rem;
         }
-
-        .nav-links a:hover { color: white; }
-        .nav-links a:hover::after { width: 100%; }
+        
+        .nav-links a:hover { color: var(--primary); }
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.8)), url('https://picsum.photos/seed/vladivostok/1920/1080');
+            /* Overlay ensures text is readable */
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9), rgba(217, 119, 6, 0.7)), 
+                        url('https://z-cdn-media.chatglm.cn/files/3d5b1140-07b8-4298-ba62-338738e0fa35.jpg?auth_key=1877873978-660fe6912bbe4e71ace1052ac631a7c1-0-874b4e460e9c61f762ce4dfdb1043817');
             background-size: cover;
             background-position: center;
-            padding-top: 140px;
+            padding-top: 70px; /* Matches header height */
             padding-bottom: 100px;
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
         }
 
-        .hero-content { max-width: 600px; }
+        .hero-content { 
+            max-width: 600px; 
+            background: rgba(255, 255, 255, 0.9); /* White box */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
 
         .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards 0.5s;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
         }
 
         .hero p {
             font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
+            color: #475569;
+            margin-bottom: 25px;
             border-left: 4px solid var(--accent);
             padding-left: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards 0.8s;
         }
 
-        .hero-buttons {
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards 1.1s;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
 
         /* --- About FEFU --- */
         .about-grid {
@@ -234,12 +276,12 @@
 
         .about-img img {
             width: 100%;
-            border-radius: 4px;
-            box-shadow: 20px 20px 0 var(--bg-card);
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
             transition: transform 0.5s ease;
         }
 
-        .about-img:hover img { transform: scale(1.02); }
+        .about-img:hover img { transform: scale(1.01); }
 
         .feature-list li {
             margin-bottom: 15px;
@@ -247,12 +289,15 @@
             align-items: center;
             gap: 15px;
             color: var(--text-muted);
-            transition: transform 0.3s ease;
+            font-size: 1.05rem;
         }
 
-        .feature-list li:hover { transform: translateX(10px); color: white; }
-        .feature-list i { color: var(--accent); transition: transform 0.3s ease; }
-        .feature-list li:hover i { transform: scale(1.2); }
+        .feature-list i { 
+            color: var(--primary); 
+            background: #e0e7ff;
+            padding: 8px;
+            border-radius: 50%;
+        }
 
         /* --- Fees Table --- */
         .fees-container {
@@ -260,67 +305,139 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
-        
-        .fees-container:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
         table { width: 100%; border-collapse: collapse; text-align: left; }
 
         th {
             background-color: var(--primary);
             color: white;
-            padding: 20px;
+            padding: 18px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
         }
 
         td {
-            padding: 20px;
+            padding: 18px;
             border-bottom: 1px solid var(--border);
             color: var(--text-muted);
-            transition: background 0.3s ease;
         }
 
-        tr:hover td { background-color: rgba(255,255,255,0.03); color: white; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #f8fafc; }
 
-        /* --- Consultation Box --- */
-        .consultation-box {
-            background: linear-gradient(135deg, var(--primary), #172554);
-            padding: 60px;
-            text-align: center;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-top: 40px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* --- YouTube Section --- */
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .consultation-box:hover {
+        .youtube-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        .youtube-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
+
+        .thumb-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .thumb-container img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .youtube-card:hover .thumb-container img { transform: scale(1.05); }
+
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-btn {
+            font-size: 3rem;
+            color: white;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .youtube-card:hover .play-btn {
+            opacity: 1;
+            transform: scale(1.1);
+            color: var(--youtube-red);
+        }
+
+        .yt-info { padding: 20px; }
+
+        .yt-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .yt-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .yt-link { color: var(--youtube-red); font-weight: 600; }
 
         /* --- Trust Indicators --- */
         .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 
         .trust-card {
             background: var(--bg-card);
-            padding: 30px;
-            border-top: 3px solid var(--accent);
+            padding: 40px 20px;
+            border-radius: 8px;
             text-align: center;
             transition: all 0.3s ease;
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
         .trust-card:hover {
-            transform: translateY(-10px);
-            background: #253248;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
         }
 
-        .trust-card i { font-size: 2rem; color: var(--accent); margin-bottom: 20px; transition: transform 0.5s ease; }
-        .trust-card:hover i { transform: scale(1.2) rotate(5deg); }
+        .trust-card i { 
+            font-size: 2rem; 
+            color: var(--accent); 
+            margin-bottom: 20px; 
+            background: #fffbeb0;
+            width: 70px; height: 70px; line-height: 70px; border-radius: 50%;
+            margin-left: auto; margin-right: auto;
+        }
 
         /* --- Contact Section --- */
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -329,41 +446,36 @@
             background: var(--bg-card);
             padding: 40px;
             border-radius: 8px;
-            height: 100%;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
 
         .contact-item {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 20px;
-            transition: transform 0.3s ease;
         }
 
-        .contact-item:hover { transform: translateX(5px); }
-
         .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.05);
+            width: 45px;
+            height: 45px;
+            background: #ffedd5; /* Warm light orange */
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            color: var(--accent);
-            font-size: 1.2rem;
+            border-radius: 8px;
+            color: var(--primary);
+            font-size: 1.1rem;
             flex-shrink: 0;
-            transition: all 0.3s ease;
         }
         
-        .contact-item:hover .contact-icon { background: var(--accent); color: white; }
-
         .contact-link {
-            color: var(--text-muted);
-            border-bottom: 1px dotted var(--border);
-            transition: 0.2s;
+            color: var(--text-main);
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
         }
-        .contact-link:hover { color: white; border-bottom-color: white; }
+        .contact-link:hover { color: var(--primary); border-bottom-color: var(--primary); }
 
         /* --- Floating WhatsApp --- */
         .floating-wa {
@@ -379,49 +491,65 @@
             align-items: center;
             justify-content: center;
             font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             z-index: 1000;
             transition: all 0.3s ease;
-            animation: pulse-green 2s infinite;
         }
         
-        .floating-wa:hover { transform: scale(1.1) rotate(10deg); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
+        .floating-wa:hover { transform: scale(1.1); }
 
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* --- Inputs --- */
+        input { 
+            width: 100%; 
+            padding: 14px; 
+            margin-bottom: 15px; 
+            background: #ffffff; 
+            border:1px solid var(--border); 
+            color: var(--text-main); 
+            border-radius: 6px;
+            font-family: inherit;
         }
-
-        input { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
         input:focus {
             outline: none;
-            border-color: var(--accent) !important;
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+            border-color: var(--primary);
         }
+
+        .center-btn { text-align: center; margin-top: 40px; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
             .nav-links { display: none; } 
-            .consultation-box { padding: 30px; }
+            /* On very small screens, logo text might get hidden or squeezed, keeping it for now */
+            .logo-text { display: block; } 
+            nav { height: 60px; }
+            .logo-img { height: 40px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Ambient Background for Warm Atmosphere -->
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
     <!-- Header -->
     <header id="navbar">
         <div class="container">
             <nav>
-                <div class="logo">
-                    <i class="fa-solid fa-graduation-cap"></i> NextStepOverseas
+                <!-- Logo Wrapper: Image + Text Side by Side -->
+                <div class="logo-wrapper">
+                    <img src="https://z-cdn-media.chatglm.cn/files/f535bfa1-672a-473b-9fe6-25114c6bfbcd.jpg?auth_key=1877873978-4285dd8782ad4c3a880a3f7718544f1a-0-60a3a695129b31f82664ad396e996c04" alt="NextStepOverseas Logo" class="logo-img">
+                    <!-- Text explicitly added, made bold and dark blue -->
+                    <span class="logo-text">NextStepOverseas</span>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#about">About FEFU</a></li>
                     <li><a href="#fees">Fees Structure</a></li>
-                    <li><a href="#consultancy">Consultancy</a></li>
-                    <li><a href="#contact" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.8rem;">Contact Us</a></li>
+                    <li><a href="#youtube">Videos</a></li>
+                    <li><a href="#contact" class="btn btn-gold" style="padding: 10px 20px;">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -433,9 +561,9 @@
             <div class="hero-content">
                 <h1>Far Eastern Federal University</h1>
                 <p><strong>Quality Over Quantity.</strong> We provide dedicated consultancy for Indian students aiming for world-class medical education in Vladivostok, Russia.</p>
-                <div class="hero-buttons" style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="#consultancy" class="btn btn-gold">Book 1-on-1 Video Call</a>
-                    <a href="#fees" class="btn btn-outline">View Fee Structure</a>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-gold">Book 1-on-1 Video Call</a>
+                    <a href="#youtube" class="btn btn-youtube"><i class="fa-brands fa-youtube"></i> Watch Videos</a>
                 </div>
             </div>
         </div>
@@ -446,7 +574,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="reveal">
-                    <h2 style="font-size: 2rem; margin-bottom: 20px;">Why Study at FEFU?</h2>
+                    <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--primary-dark);">Why Study at FEFU?</h2>
                     <p style="color: var(--text-muted); margin-bottom: 20px;">
                         Far Eastern Federal University (FEFU) is one of Russia's top-rated federal universities. Located in the beautiful coastal city of Vladivostok, it offers a modern campus and a globally recognized MBBS degree.
                     </p>
@@ -458,14 +586,14 @@
                     </ul>
                 </div>
                 <div class="about-img reveal delay-200">
-                    <img src="https://picsum.photos/seed/fefu/600/400" alt="Far Eastern Federal University Campus">
+                    <img src="https://z-cdn-media.chatglm.cn/files/69313c91-fed9-4bc2-a3e8-dec09f2f90d2.jpg?auth_key=1877873978-5fa11fe90dc64c1b8b8c8f612836d621-0-246fd9da3138c7020abef95b93faaa6c" alt="FEFU Residential Area">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Fees Structure Section -->
-    <section id="fees" class="section-padding" style="background-color: #131c31;">
+    <section id="fees" class="section-padding" style="background-color: #fff;">
         <div class="container">
             <h2 class="section-title reveal">Transparent Fee Structure</h2>
             <p class="section-subtitle reveal delay-100">No hidden costs. Fees estimated in INR for Indian students.</p>
@@ -502,23 +630,90 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="fee-note">
-                    *Fees are calculated at an approximate exchange rate of 1 USD = 83 INR. Actual fees may vary slightly based on the official university exchange rate at the time of payment. Contact us for the exact invoice.
+                <div class="fee-note" style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
+                    *Fees are calculated at an approximate exchange rate of 1 USD = 83 INR. Actual fees may vary slightly based on official university exchange rate at time of payment.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust & Services Section -->
-    <section class="section-padding">
+    <!-- YouTube Section -->
+    <section id="youtube" class="section-padding">
         <div class="container">
-            <h2 class="section-title reveal">Our Commitment</h2>
+            <h2 class="section-title reveal">Watch Our Journey</h2>
+            <p class="section-subtitle reveal delay-100">Real insights, hostel reality, and campus tours on our channel.</p>
+
+            <div class="youtube-grid">
+                <!-- Video Card 1: Hostel Reality -->
+                <a href="https://www.youtube.com/channel/UCQbcqMVJhUTJSXCbv0nzZVg" target="_blank" class="youtube-card reveal delay-100">
+                    <div class="thumb-container">
+                        <img src="https://z-cdn-media.chatglm.cn/files/3636d36c-a949-41dc-84ae-6829ab71487d.png?auth_key=1877873978-afded36a2d9e4fad87abc60fcec753d6-0-23764bf837b6ff6739c8015abd0b357d" alt="Hostel Reality Thumbnail">
+                        <div class="play-overlay">
+                            <i class="fa-brands fa-youtube play-btn"></i>
+                        </div>
+                    </div>
+                    <div class="yt-info">
+                        <div class="yt-title">Hostel Reality & Scam Alert: MBBS Russia</div>
+                        <div class="yt-meta">
+                            <span>Must Watch</span>
+                            <span class="yt-link">Watch Now <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Video Card 2: Campus Tour -->
+                <a href="https://www.youtube.com/channel/UCQbcqMVJhUTJSXCbv0nzZVg" target="_blank" class="youtube-card reveal delay-200">
+                    <div class="thumb-container">
+                        <img src="https://z-cdn-media.chatglm.cn/files/0752e10f-ed72-4340-b6bc-a84e44cdab0b.jpg?auth_key=1877873978-de36d26a9b0c4198b19af332c3c92abe-0-63a88c61072038525d93bad14f70bfcf" alt="Campus Tour">
+                        <div class="play-overlay">
+                            <i class="fa-brands fa-youtube play-btn"></i>
+                        </div>
+                    </div>
+                    <div class="yt-info">
+                        <div class="yt-title">FEFU Campus Tour</div>
+                        <div class="yt-meta">
+                            <span>Vladivostok</span>
+                            <span class="yt-link">Watch Now <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Video Card 3: City Life -->
+                <a href="https://www.youtube.com/channel/UCQbcqMVJhUTJSXCbv0nzZVg" target="_blank" class="youtube-card reveal delay-300">
+                    <div class="thumb-container">
+                        <img src="https://z-cdn-media.chatglm.cn/files/b3f82dde-7929-41d9-b2ec-2bc931a9782f.jpg?auth_key=1877873978-21b846b85ef54498b5aa2df5a8301c3e-0-932369f1daeb77c4f19cdba900f0f9ee" alt="City Life">
+                        <div class="play-overlay">
+                            <i class="fa-brands fa-youtube play-btn"></i>
+                        </div>
+                    </div>
+                    <div class="yt-info">
+                        <div class="yt-title">Life in Russia: Student Experience</div>
+                        <div class="yt-meta">
+                            <span>Student Vlog</span>
+                            <span class="yt-link">Watch Now <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="center-btn reveal">
+                <a href="https://www.youtube.com/channel/UCQbcqMVJhUTJSXCbv0nzZVg" target="_blank" class="btn btn-youtube">
+                    <i class="fa-brands fa-youtube"></i> Visit Full Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Services Section -->
+    <section class="section-padding" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title reveal" style="color: var(--primary-dark);">Our Commitment</h2>
             <div class="trust-grid">
                 <div class="trust-card reveal delay-100">
                     <i class="fa-solid fa-video"></i>
                     <h3>1-on-1 Consultancy</h3>
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">
-                        Personal video call sessions to guide parents and students through the admission process.
+                        Personal video call sessions to guide parents and students through admission process.
                     </p>
                 </div>
                 <div class="trust-card reveal delay-200">
@@ -542,9 +737,10 @@
     <!-- Video Consultation CTA -->
     <section id="consultancy" class="section-padding">
         <div class="container">
-            <div class="consultation-box reveal">
-                <h2 style="margin-bottom: 15px;">Speak to an Expert Directly</h2>
-                <p style="margin-bottom: 30px; color: #cbd5e1;">
+            <div class="consultation-box reveal" style="background: linear-gradient(135deg, var(--primary), #1e3a8a); padding: 60px; text-align: center; border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);">
+                <!-- FIX: Explicitly set H2 color to WHITE for this section -->
+                <h2 style="margin-bottom: 15px; color: #ffffff !important; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Speak to an Expert Directly</h2>
+                <p style="margin-bottom: 30px; opacity: 0.9;">
                     Confused about the admission process? Book a 1-on-1 video call session with our team. We will answer all your questions regarding FEFU, visa, and hostel life.
                 </p>
                 <a href="https://wa.me/79940053832?text=Hello,%20I%20would%20like%20to%20book%20a%201-on-1%20video%20consultation%20for%20FEFU." target="_blank" class="btn btn-gold">
@@ -555,7 +751,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-padding" style="background-color: #131c31;">
+    <section id="contact" class="section-padding">
         <div class="container">
             <h2 class="section-title reveal">Get In Touch</h2>
             <p class="section-subtitle reveal delay-100">We are based in Russia to support you on the ground.</p>
@@ -583,11 +779,10 @@
                         <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div class="contact-details">
                             <h4>Email Us</h4>
-                            <a href="mailto:nextstepoverseasnso@gmail.com" class="contact-link">nextstepoverseasnso@gmail.com</a>
+                            <a href="mailto:rohit1234singhraj@gmail.com" class="contact-link">rohit1234singhraj@gmail.com</a>
                         </div>
                     </div>
 
-                    <!-- NEW TELEGRAM LINK ADDED HERE -->
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fa-brands fa-telegram"></i></div>
                         <div class="contact-details">
@@ -597,10 +792,18 @@
                     </div>
 
                     <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
+                        <div class="contact-details">
+                            <h4>Instagram</h4>
+                            <a href="https://www.instagram.com/nextstepoverseas_nso" target="_blank" class="contact-link">@nextstepoverseas_nso</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
                         <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div class="contact-details">
                             <h4>India Office</h4>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Jainamore+Bokaro" target="_blank" class="contact-link">Jainamore, Bokaro, Jharkhand, India</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Jainamori+Bokaro" target="_blank" class="contact-link">Jainamori, Bokaro, Jharkhand, India</a>
                         </div>
                     </div>
                 </div>
@@ -609,9 +812,9 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;" class="reveal delay-300">
                     <h3 style="margin-bottom: 20px;">Send a Quick Query</h3>
                     <form onsubmit="sendToWhatsapp(event)">
-                        <input type="text" id="qName" placeholder="Your Name" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #0f172a; border: 1px solid var(--border); color: white; border-radius: 4px;">
-                        <input type="text" id="qMsg" placeholder="Your Query (e.g., FEFU Admission 2024)" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #0f172a; border: 1px solid var(--border); color: white; border-radius: 4px;">
-                        <button type="submit" class="btn btn-gold" style="width: 100%;">Send via WhatsApp</button>
+                        <input type="text" id="qName" placeholder="Your Name">
+                        <input type="text" id="qMsg" placeholder="Your Query (e.g., FEFU Admission 2024)">
+                        <button type="submit" class="btn btn-blue" style="width: 100%;">Send via WhatsApp</button>
                     </form>
                 </div>
             </div>
@@ -619,8 +822,12 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: black; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
+    <footer style="background: white; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
         <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="https://www.instagram.com/nextstepoverseas_nso" target="_blank" style="font-size: 1.5rem; color: var(--text-main); margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCQbcqMVJhUTJSXCbv0nzZVg" target="_blank" style="font-size: 1.5rem; color: var(--text-main); margin: 0 10px;"><i class="fa-brands fa-youtube"></i></a>
+            </div>
             <p>&copy; 2023 NextStepOverseas. All Rights Reserved.</p>
             <p style="margin-top: 10px;">Made for <strong>Far Eastern Federal University</strong> Aspirants.</p>
         </div>
@@ -679,3 +886,4 @@
     </script>
 </body>
 </html>
+```
